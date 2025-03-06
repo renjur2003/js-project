@@ -222,7 +222,7 @@ body {
      
         /*--employee edit form-------------------------------used addemployeebtncode--------------------*/
         .form---overlay {
-          display: none;
+         display: none;
           position: fixed;
           top: 0;
           left: 0;
@@ -231,6 +231,7 @@ body {
           background: rgba(0, 0, 0, 0.5);
           justify-content: center;
           align-items: center;
+          
         }
         
         /* Form Container */

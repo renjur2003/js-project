@@ -66,32 +66,32 @@ closeFormBtn2.addEventListener("click", function () {
 });
 
 
-// employee view details----------------------------------------------viewdetails----------
+// employee view details-------------------------viewdetails----------
 
 
 function showForm() {
     document.getElementById("detailsForm").style.display = "block";
-    document.getElementById("overlay").style.display = "block";
+    
 }
 
 function hideForm() {
     document.getElementById("detailsForm").style.display = "none";
-    document.getElementById("overlay").style.display = "none";
+   
 }
 
 
 
 
-// employee edit details----------------------------------------------editdetails----------
+// employee edit details------------------------editdetails----------
 
 
-function showForm() {
-    document.getElementById("detailsForm").style.display = "block";
-    document.getElementById("overlay").style.display = "block";
+function editEmployee() {
+    document.getElementById("editForm").style.display = "block";
+    document.getElementById("editOverlay").style.display = "block";
 }
 
-function hideForm() {
-    document.getElementById("detailsForm").style.display = "none";
+function editedForm() {
+    document.getElementById("editForm").style.display = "none";
     document.getElementById("overlay").style.display = "none";
 }
 

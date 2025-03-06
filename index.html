@@ -95,7 +95,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li onclick="showForm()"><i class="bi bi-eye"></i> View Details</li>
-                            <li onclick="editEmployee(1)"><i class="bi bi-pencil"></i> Edit</li>
+                            <li onclick="editEmployee()"><i class="bi bi-pencil"></i> Edit</li>
                             <li class="text-danger" onclick="deleteEmployee(1)"><i class="bi bi-trash"></i> Delete</li>
                         </ul>
                     </div>
@@ -608,8 +608,8 @@
 
         <!-- Buttons -->
         <div class="card-footer text-center  d-flex justify-content-end pb-4">
-            <button class="btn btn-danger px-4 me-1" onclick="hideForm()">Delete</button>
-            <button class="btn btn-primary px-4 me-1" onclick="editDetails()">Edit Details</button>
+   <button class="btn btn-danger px-4 me-1" onclick="hideForm()">Delete</button>
+   <button class="btn btn-primary px-4 me-1" onclick="editDetails()">Edit Details</button>
         </div>
     </div>
 </div>
@@ -634,8 +634,9 @@
 <!--ended----------------------yyyyy-->                                 
 
 <!--employee edit form-------------------------------used addemployeebtncode-------------------->
-<div id="employeeForm" class="form---overlay" style="display: flex;">
-    <div class="form---container">
+
+<div  class="form---overlay" id="editOverlay" >
+    <div class="form---container" id="editForm">
         <div class="form--header">
             <h3>Edit Employee</h3>
             <button id="closeFormBtn" class="btn-close"></button>
@@ -746,7 +747,7 @@
 
             <!-- Buttons -->
             <div class="mt-4 text-end">
-                <button type="button" class="btn btn-light" id="closeFormBtn2">Cancel</button>
+                <button type="button" class="btn btn-light" onclick="editedForm()">Cancel</button>
                 <button type="submit" class="btn btn-primary">save changes</button>
             </div>
         </form>
