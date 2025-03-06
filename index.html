@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="d-flex">
+        <div class="bg-primary text-white p-3">
+            <h3>Employee</h3>
+            <h3 class="fw-light mb-5">Management</h3>
+            <ul class="list-unstyled">
+                <li class="d-flex"><i class="bi bi-house-door-fill"></i><a href="#" class="nav-link text-white mb-3 ms-2">Dashboard</a></li>
+              
+                <li class="d-flex"> <i class="bi bi-bar-chart-fill"></i><a href="#" class="nav-link text-white mb-3 ms-2">Employees</a></li>
+                <li class="d-flex"> <i class="bi bi-person-fill"></i><a href="#" class="nav-link text-white mb-3 ms-2">My Profile</a></li>
+                <li class="d-flex"> <i class="bi bi-lock-fill"></i><a href="#" class="nav-link text-white mb-3 ms-2">Logout</a></li>
+            </ul>
+        </div>
+        <div class="container-fluid p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <small>Dashboard / Employees</small>
+                    <h2>Employees</h2>
+                </div>
+
+                <!-- sreach bar-->
+                <div class="d-flex justify-content-end mt-3 me-4">
+                    <div class="search-container">
+                        <i class="bi bi-search"></i>
+                        <input type="text" placeholder="Search">
+                        <i class="bi bi-bell"></i>
+                        <img src="https://randomuser.me/api/portraits/men/50.jpg" alt="DP" class="profile-img">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="bg-white p-3 rounded shadow">
+               <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <h4>Employees List</h4>
+                       <!-- page slecter box -->
+
+                           <select class="form-select w-auto ms-2" id="pageSelector">
+                               <option>1</option>
+                               <option>2</option>
+                               <option>3</option>
+                               <option>4</option>
+                               <option>5</option>
+                               <option>6</option>
+                               <option>7</option>
+                               <option>8</option>
+                               <option>9</option>
+                               <option>10</option>
+                           </select>
+                           <span class="ms-2">of 10</span>
+                       </div>
+               
+               </div>
+               <!--employees list section-->
+                <div class="row fw-light border-bottom py-2">
+                    <div class="col-1">Sl.No</div>
+                    <div class="col-2">Name</div>
+                    <div class="col-2 pe-5 me-4">Email</div>
+                    <div class="col-1">Phone</div>
+                    <div class="col-1">Gender</div>
+                    <div class="col-1">DOB</div>
+                    <div class="col-2">Country</div>
+               
+                </div>
+                
+                <!-- Employees Data 1 to 10-->
+               
+                    <div class="row py-2 border-bottom align-items-center">
+                        <div class="col-1">#01</div>
+                        <img src="https://randomuser.me/api/portraits/men/5.jpg" alt="DP" class="profile-img">
+                        <div class="col-1">Michael Johnson</div>
+                        <div class="col-2  me-5 ms-3 ">michaeljohnson@example.com</div>
+                        <div class="col-1">5551234567</div>
+                        <div class="col-1">Male</div>
+                        <div class="col-1">10 Dec 1985</div>
+                        <div class="col-2">USA</div>
+                        <div class="col">
+                              <!-- Three Dot Button -->
+               
+
+
+                    <div class="dropdown">
+                        <button class="three-dot-btn" type="button" onclick="toggleDropdown(this)">
+                            <strong>...</strong>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li onclick="showForm()"><i class="bi bi-eye"></i> View Details</li>
+                            <li onclick="editEmployee(1)"><i class="bi bi-pencil"></i> Edit</li>
+                            <li class="text-danger" onclick="deleteEmployee(1)"><i class="bi bi-trash"></i> Delete</li>
+                        </ul>
+                    </div>
+                    </div>
+                    </div>
+
+
+
+                
+                    <div class="row py-2 border-bottom align-items-center">
+                        <div class="col-1">#02</div>
+                        <img src="https://randomuser.me/api/portraits/men/10.jpg" alt="DP" class="profile-img">
+                        <div class="col-1">Sarah Williams</div>
+                        <div class="col-2  me-5 ms-3">sarahwilliams@example.com</div>
+                        <div class="col-1">5559876543</div>
+                        <div class="col-1">Female</div>
+                        <div class="col-1">15 Jan 1990</div>
+                        <div class="col-2">UK</div>
+                        <div class="col">
+                             <!-- Three Dot Button -->
+                             <div class="dropdown">
+                                <button class="three-dot-btn" type="button" onclick="toggleDropdown(this)">
+                                    <strong>...</strong>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li onclick="viewDetails(1)"><i class="bi bi-eye"></i> View Details</li>
+                                    <li onclick="editEmployee(1)"><i class="bi bi-pencil"></i> Edit</li>
+                                    <li class="text-danger" onclick="deleteEmployee(1)"><i class="bi bi-trash"></i> Delete</li>
+                                </ul>
+                            </div>
+                            </div>
+                            </div>
+        
+                
+                    <div class="row py-2 border-bottom align-items-center">
+                        <div class="col-1">#03</div>
+                        <img src="https://randomuser.me/api/portraits/men/13.jpg" alt="DP" class="profile-img">
+                        <div class="col-1">James Brown</div>
+                        <div class="col-2  me-5 ms-3">jamesbrown@example.com</div>
+                        <div class="col-1">5557654321</div>
+                        <div class="col-1">Male</div>
+                        <div class="col-1">20 Mar 1982</div>
+                        <div class="col-2">Canada</div>
+                        <div class="col">
+                           
+                      <!-- Three Dot Button -->
+                      <div class="dropdown">
+                        <button class="three-dot-btn" type="button" onclick="toggleDropdown(this)">
+                            <strong>...</strong>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li onclick="viewDetails(1)"><i class="bi bi-eye"></i> View Details</li>
+                            <li onclick="editEmployee(1)"><i class="bi bi-pencil"></i> Edit</li>
+                            <li class="text-danger" onclick="deleteEmployee(1)"><i class="bi bi-trash"></i> Delete</li>
+                        </ul>
+                    </div>
+                    </div>
+                    </div>
+
+                
+                    <div class="row py-2 border-bottom align-items-center">
+                        <div class="col-1">#04</div>
+                        <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="DP" class="profile-img">
+                        <div class="col-1">Emily Davis</div>
+                        <div class="col-2  me-5 ms-3">emilydavis@example.com</div>
+                        <div class="col-1">5556789012</div>
+                        <div class="col-1">Female</div>
+                        <div class="col-1">25 Jul 1995</div>
+                        <div class="col-2">Australia</div>
+                        <div class="col">
+                             <!-- Three Dot Button -->
+                             <div class="dropdown">
+                                <button class="three-dot-btn" type="button" onclick="toggleDropdown(this)">
+                                    <strong>...</strong>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li onclick="viewDetails(1)"><i class="bi bi-eye"></i> View Details</li>
+                                    <li onclick="editEmployee(1)"><i class="bi bi-pencil"></i> Edit</li>
+                                    <li class="text-danger" onclick="deleteEmployee(1)"><i class="bi bi-trash"></i> Delete</li>
+                                </ul>
+                            </div>
+                            </div>
+                            </div>
+        
+                
+                    <div class="row py-2 border-bottom align-items-center">
+                        <div class="col-1">#05</div>
+                        <img src="https://randomuser.me/api/portraits/men/15.jpg" alt="DP" class="profile-img">
+                        <div class="col-1">Robert Wilson</div>
+                        <div class="col-2 me-5 ms-3">robertwilson@example.com</div>
+                        <div class="col-1">5553456789</div>
+                        <div class="col-1">Male</div>
+                        <div class="col-1">30 Sep 1988</div>
+                        <div class="col-2">Germany</div>
+                        <div class="col">
+                              <!-- Three Dot Button -->
+                              <div class="dropdown">
+                                <button class="three-dot-btn" type="button" onclick="toggleDropdown(this)">
+                                    <strong>...</strong>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li onclick="viewDetails(1)"><i class="bi bi-eye"></i> View Details</li>
+                                    <li onclick="editEmployee(1)"><i class="bi bi-pencil"></i> Edit</li>
+                                    <li class="text-danger" onclick="deleteEmployee(1)"><i class="bi bi-trash"></i> Delete</li>
+                                </ul>
+                            </div>
+                            </div>
+                            </div>
+        
+                
+                    <div class="row py-2 border-bottom align-items-center">
+                        <div class="col-1">#06</div>
+                        <img src="https://randomuser.me/api/portraits/men/19.jpg" alt="DP" class="profile-img">
+                        <div class="col-1">Jessica Lee</div>
+                        <div class="col-2 me-5 ms-3">jessicalee@example.com</div>
+                        <div class="col-1">5551230987</div>
+                        <div class="col-1">Female</div>
+                        <div class="col-1">5 Nov 1993</div>
+                        <div class="col-2">France</div>
+                        <div class="col">
+                             <!-- Three Dot Button -->
+                             <div class="dropdown">
+                                <button class="three-dot-btn" type="button" onclick="toggleDropdown(this)">
+                                    <strong>...</strong>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li onclick="viewDetails(1)"><i class="bi bi-eye"></i> View Details</li>
+                                    <li onclick="editEmployee(1)"><i class="bi bi-pencil"></i> Edit</li>
+                                    <li class="text-danger" onclick="deleteEmployee(1)"><i class="bi bi-trash"></i> Delete</li>
+                                </ul>
+                            </div>
+                            </div>
+                            </div>
+        
+                
+                    <div class="row py-2 border-bottom align-items-center">
+                        <div class="col-1">#07</div>
+                        <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="DP" class="profile-img">
+                        <div class="col-1">Daniel Harris</div>
+                        <div class="col-2  me-5 ms-3">danielharris@example.com</div>
+                        <div class="col-1">5552345678</div>
+                        <div class="col-1">Male</div>
+                        <div class="col-1">12 Dec 1987</div>
+                        <div class="col-2">Italy</div>
+                        <div class="col">
+                              <!-- Three Dot Button -->
+                              <div class="dropdown">
+                                <button class="three-dot-btn" type="button" onclick="toggleDropdown(this)">
+                                    <strong>...</strong>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li onclick="viewDetails(1)"><i class="bi bi-eye"></i> View Details</li>
+                                    <li onclick="editEmployee(1)"><i class="bi bi-pencil"></i> Edit</li>
+                                    <li class="text-danger" onclick="deleteEmployee(1)"><i class="bi bi-trash"></i> Delete</li>
+                                </ul>
+                            </div>
+                            </div>
+                            </div>
+        
+                
+                    <div class="row py-2 border-bottom align-items-center">
+                        <div class="col-1">#08</div>
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="DP" class="profile-img">
+                        <div class="col-1">Laura Martin</div>
+                        <div class="col-2  me-5 ms-3">lauramartin@example.com</div>
+                        <div class="col-1">5558901234</div>
+                        <div class="col-1">Female</div>
+                        <div class="col-1">8 Apr 1991</div>
+                        <div class="col-2">Spain</div>
+                        <div class="col">
+                             <!-- Three Dot Button -->
+                             <div class="dropdown">
+                                <button class="three-dot-btn" type="button" onclick="toggleDropdown(this)">
+                                    <strong>...</strong>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li onclick="viewDetails(1)"><i class="bi bi-eye"></i> View Details</li>
+                                    <li onclick="editEmployee(1)"><i class="bi bi-pencil"></i> Edit</li>
+                                    <li class="text-danger" onclick="deleteEmployee(1)"><i class="bi bi-trash"></i> Delete</li>
+                                </ul>
+                            </div>
+                            </div>
+                            </div>
+        
+                
+                    <div class="row py-2 border-bottom align-items-center">
+                        <div class="col-1">#09</div>
+                        <img src="https://randomuser.me/api/portraits/men/20.jpg" alt="DP" class="profile-img">
+                        <div class="col-1">William Anderson</div>
+                        <div class="col-2 me-5 ms-3">williamanderson@example.com</div>
+                        <div class="col-1">5556782345</div>
+                        <div class="col-1">Male</div>
+                        <div class="col-1">19 Jun 1980</div>
+                        <div class="col-2">Netherlands</div>
+                        <div class="col">
+                            <!-- Three Dot Button -->
+                            <div class="dropdown">
+                                <button class="three-dot-btn" type="button" onclick="toggleDropdown(this)">
+                                    <strong>...</strong>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li onclick="viewDetails(1)"><i class="bi bi-eye"></i> View Details</li>
+                                    <li onclick="editEmployee(1)"><i class="bi bi-pencil"></i> Edit</li>
+                                    <li class="text-danger" onclick="deleteEmployee(1)"><i class="bi bi-trash"></i> Delete</li>
+                                </ul>
+                            </div>
+                            </div>
+                            </div>
+        
+                
+                    <div class="row py-2 border-bottom align-items-center">
+                        <div class="col-1">#10</div>
+                        <img src="https://randomuser.me/api/portraits/men/25.jpg" alt="DP" class="profile-img">
+                        <div class="col-1">Sophia Thomas</div>
+                        <div class="col-2 me-5 ms-3">sophiathomas@example.com</div>
+                        <div class="col-1">5554567890</div>
+                        <div class="col-1">Female</div>
+                        <div class="col-1">3 Aug 1992</div>
+                        <div class="col-2">Sweden</div>
+                        <div class="col">
+                             <!-- Three Dot Button -->
+                             <div class="dropdown">
+                                <button class="three-dot-btn" type="button" onclick="toggleDropdown(this)">
+                                    <strong>...</strong>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li onclick="viewDetails(1)"><i class="bi bi-eye"></i> View Details</li>
+                                    <li onclick="editEmployee(1)"><i class="bi bi-pencil"></i> Edit</li>
+                                    <li class="text-danger" onclick="deleteEmployee(1)"><i class="bi bi-trash"></i> Delete</li>
+                                </ul>
+                            </div>
+                            </div>
+                            </div>   
+                </div>
+                
+                
+      <!-- Pagination Section -->
+<div class="pagination-container my-4">
+    <button class="pagination-btn">«</button>
+    <button class="pagination-btn"><</button>
+    <button class="pagination-btn">1</button>
+    <button class="pagination-btn">2</button>
+    <button class="pagination-btn">3</button>
+    <button class="pagination-btn">...</button>
+    <button class="pagination-btn">10</button>
+    <button class="pagination-btn">></button>
+    <button class="pagination-btn">»</button>
+  </div>
+  
+  <!-- Footer Section -->
+  <footer class="border-top">
+    <div class="footer-left">
+      <p>&copy; 2023 All Rights Reserved. Stackup</p>
+    </div>
+    <div class="footer-right">
+      <a href="#">Terms of Use</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </footer>
+      </div>
+    </div>
+
+
+
+<!--add member form-->
+
+<!-- Add Employee Button -->
+<div class="container mt-4">
+    <button id="openFormBtn" class="btn btn-primary">Add Employee</button>
+</div>
+
+<!-- Employee Form (Initially Hidden) -->
+<div id="employeeForm" class="form-overlay">
+    <div class="form-container">
+        <div class="form-header">
+            <h3>Add Employee</h3>
+            <button id="closeFormBtn" class="btn-close"></button>
+        </div>
+
+        <!-- Upload Image -->
+        <div class="upload-section text-center">
+            <div class="upload-box border border-dashed p-4">
+                <p>📤 <strong>Upload Image</strong></p>
+                <small>PNG, JPG files are allowed</small>
+            </div>
+        </div>
+
+        <!-- Form Fields -->
+        <form class="p-3">
+            <div class="row">
+                <!-- Salutation -->
+                <div class="col-md-4">
+                    <label>Salutation *</label>
+                    <select class="form-control">
+                        <option>Select</option>
+                        <option>Mr.</option>
+                        <option>Ms.</option>
+                    </select>
+                </div>
+                <!-- First Name -->
+                <div class="col-md-4">
+                    <label>First Name *</label>
+                    <input type="text" class="form-control" placeholder="John">
+                </div>
+                <!-- Last Name -->
+                <div class="col-md-4">
+                    <label>Last Name *</label>
+                    <input type="text" class="form-control" placeholder="Doe">
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <!-- Email -->
+                <div class="col-md-6">
+                    <label>Email Address *</label>
+                    <input type="email" class="form-control" placeholder="mail@example.com">
+                </div>
+                <!-- Mobile -->
+                <div class="col-md-6">
+                    <label>Mobile Number *</label>
+                    <input type="text" class="form-control" placeholder="Enter mobile number">
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <!-- Date of Birth -->
+                <div class="col-md-6">
+                    <label>Date of Birth *</label>
+                    <input type="date" class="form-control">
+                </div>
+                <!-- Gender -->
+                <div class="col-md-6">
+                    <label>Gender *</label>
+                    <div>
+                        <input type="radio" name="gender" value="male"> Male
+                        <input type="radio" name="gender" value="female"> Female
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <!-- Qualifications -->
+                <div class="col-md-12">
+                    <label>Qualifications</label>
+                    <input type="text" class="form-control" placeholder="Enter qualifications">
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <!-- Address -->
+                <div class="col-md-12">
+                    <label>Address *</label>
+                    <input type="text" class="form-control" placeholder="Enter address">
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <!-- Country -->
+                <div class="col-md-4">
+                    <label>Country *</label>
+                    <select class="form-control">
+                        <option>Select Country</option>
+                        <option>India</option>
+                        <option>USA</option>
+                    </select>
+                </div>
+                <!-- State -->
+                <div class="col-md-4">
+                    <label>State *</label>
+                    <select class="form-control">
+                        <option>Select State</option>
+                        <option>Kerala</option>
+                        <option>Tamil Nadu</option>
+                    </select>
+                </div>
+                <!-- City -->
+                <div class="col-md-4">
+                    <label>City *</label>
+                    <input type="text" class="form-control" placeholder="Enter city">
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="mt-4 text-end">
+                <button type="button" class="btn btn-light" id="closeFormBtn2">Cancel</button>
+                <button type="submit" class="btn btn-primary">Add Employee</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!--employee veiw details-------------------view details ------------------------------>
+<!-- Overlay -->
+
+
+<!-- Employee Details Form -->
+<div class="form--container px-5" id="detailsForm">
+
+
+
+<!--new add position----------------------------yyyyy-------------->
+
+    <div class="container-fluid p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <small>Dashboard / Employees</small>
+                <h2>Employees</h2>
+            </div>
+
+            <!-- sreach bar-->
+            <div class="d-flex justify-content-end mt-3 me-4">
+                <div class="search-container">
+                    <i class="bi bi-search"></i>
+                    <input type="text" placeholder="Search">
+                    <i class="bi bi-bell"></i>
+                    <img src="https://randomuser.me/api/portraits/men/50.jpg" alt="DP" class="profile-img">
+                </div>
+            </div>
+            
+        </div>
+
+<!---end----------------yyyyy------------->
+
+
+<div class="container mt-5 px-5">
+    <div class="card shadow-lg">
+        <!-- Header Image -->
+        <div class="position-relative">
+            <img src="https://source.unsplash.com/800x300/?technology" alt="cover" class="card-img-top">
+            <div class="position-absolute top-100 start-50 translate-middle">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="profile" class="rounded-circle border border-white profile--mg">
+            </div>
+        </div>
+
+        <!-- Employee Details -->
+        <div class="card-body text-center mt-5">
+            <h2 class="card-title">Mr. Michael Johnson</h2>
+            <p class="card-text text-muted">michaeljohnson@example.com</p>
+        </div>
+
+        <!-- Info Grid -->
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card info-card">
+                        <div class="card-body text-left">
+                            <p class="text-muted">Gender</p>
+                            <p class="fw-bold">Male</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card info-card">
+                        <div class="card-body text-left">
+                            <p class="text-muted">Age</p>
+                            <p class="fw-bold">38</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card info-card">
+                        <div class="card-body text-left">
+                            <p class="text-muted">Date of Birth</p>
+                            <p class="fw-bold">20 December 1985</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card info-card">
+                        <div class="card-body text-left">
+                            <p class="text-muted">Mobile Number</p>
+                            <p class="fw-bold">9876543210</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card info-card">
+                        <div class="card-body text-left">
+                            <p class="text-muted">Qualifications</p>
+                            <p class="fw-bold">Bachelor's Degree</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card info-card">
+                        <div class="card-body text-left">
+                            <p class="text-muted">Address</p>
+                            <p class="fw-bold">789 Pine Stcago, Texas, USA 123456</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card info-card">
+                        <div class="card-body text-left">
+                            <p class="text-muted">username</p>
+                            <p class="fw-bold">michaeljohnson</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="card-footer text-center  d-flex justify-content-end pb-4">
+            <button class="btn btn-danger px-4 me-1" onclick="hideForm()">Delete</button>
+            <button class="btn btn-primary px-4 me-1" onclick="editDetails()">Edit Details</button>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+
+<!--new added-----------------yyyyyyyy-->
+<footer class="border-top">
+    <div class="footer-left">
+      <p>&copy; 2023 All Rights Reserved. Stackup</p>
+    </div>
+    <div class="footer-right">
+      <a href="#">Terms of Use</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </footer>
+      </div>
+    </div>
+
+<!--ended----------------------yyyyy-->                                 
+
+<!--employee edit form-------------------------------used addemployeebtncode-------------------->
+<div id="employeeForm" class="form---overlay" style="display: flex;">
+    <div class="form---container">
+        <div class="form--header">
+            <h3>Edit Employee</h3>
+            <button id="closeFormBtn" class="btn-close"></button>
+        </div>
+
+        <!-- Upload Image -->
+        <div class="upload-section text-center">
+            <div class="upload--box border border-dashed p-4">
+              <!--  <p>📤 <strong>Upload Image</strong></p> -->
+            <!--   <small>PNG, JPG files are allowed</small> -->
+            </div>
+        </div>
+
+        <!-- Form Fields -->
+        <form class="p-3">
+            <div class="row">
+                <!-- Salutation -->
+                <div class="col-md-4">
+                    <label>Salutation *</label>
+                    <select class="form-control">
+                        <option>Select</option>
+                        <option>Mr.</option>
+                        <option>Ms.</option>
+                    </select>
+                </div>
+                <!-- First Name -->
+                <div class="col-md-4">
+                    <label>First Name *</label>
+                    <input type="text" class="form-control" placeholder="John">
+                </div>
+                <!-- Last Name -->
+                <div class="col-md-4">
+                    <label>Last Name *</label>
+                    <input type="text" class="form-control" placeholder="Doe">
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <!-- Email -->
+                <div class="col-md-6">
+                    <label>Email Address *</label>
+                    <input type="email" class="form-control" placeholder="mail@example.com">
+                </div>
+                <!-- Mobile -->
+                <div class="col-md-6">
+                    <label>Mobile Number *</label>
+                    <input type="text" class="form-control" placeholder="Enter mobile number">
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <!-- Date of Birth -->
+                <div class="col-md-6">
+                    <label>Date of Birth *</label>
+                    <input type="date" class="form-control">
+                </div>
+                <!-- Gender -->
+                <div class="col-md-6">
+                    <label>Gender *</label>
+                    <div>
+                        <input type="radio" name="gender" value="male"> Male
+                        <input type="radio" name="gender" value="female"> Female
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <!-- Qualifications -->
+                <div class="col-md-12">
+                    <label>Qualifications</label>
+                    <input type="text" class="form-control" placeholder="Enter qualifications">
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <!-- Address -->
+                <div class="col-md-12">
+                    <label>Address *</label>
+                    <input type="text" class="form-control" placeholder="Enter address">
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <!-- Country -->
+                <div class="col-md-4">
+                    <label>Country *</label>
+                    <select class="form-control">
+                        <option>Select Country</option>
+                        <option>India</option>
+                        <option>USA</option>
+                    </select>
+                </div>
+                <!-- State -->
+                <div class="col-md-4">
+                    <label>State *</label>
+                    <select class="form-control">
+                        <option>Select State</option>
+                        <option>Kerala</option>
+                        <option>Tamil Nadu</option>
+                    </select>
+                </div>
+                <!-- City -->
+                <div class="col-md-4">
+                    <label>City *</label>
+                    <input type="text" class="form-control" placeholder="Enter city">
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="mt-4 text-end">
+                <button type="button" class="btn btn-light" id="closeFormBtn2">Cancel</button>
+                <button type="submit" class="btn btn-primary">save changes</button>
+            </div>
+        </form>
+    </div>
+</div>
+ 
+
+
+    <!--link script.js and bootstrap js-->
+    <script src="script.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
