@@ -34,12 +34,12 @@ function editEmployee(id) {
 }
 
 // Function to handle Delete
-function deleteEmployee(id) {
+//function deleteEmployee(id) {
  //   let confirmDelete = confirm("Are you sure you want to delete employee #" + id + "?");
     //if (confirmDelete) {
        // alert("Employee #" + id + " deleted successfully.");
    // }
-}
+//}
     
 
 
@@ -92,6 +92,18 @@ function editEmployee() {
 
 function editedForm() {
     document.getElementById("editForm").style.display = "none";
-    document.getElementById("overlay").style.display = "none";
+    document.getElementById("editOverlay").style.display = "none";
 }
 
+//delete employeee------
+function deleteEmployee() {
+    document.getElementById("deleteFrom").style.display = "block";
+    document.getElementById("deleteOverlay").style.display ="block";
+
+}
+
+function deleteFrom() {
+    document.getElementById("deleteFrom").style.display = "none";
+    document.getElementById("deleteOverlay").style.display ="none";
+
+}
