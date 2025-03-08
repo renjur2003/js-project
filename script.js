@@ -22,25 +22,49 @@ document.addEventListener("click", function(event) {
     }
 });
 
+// employee view details-------------------------viewdetails----------
 
-// Function to handle View Details
-function viewDetails(id) {
-    alert("Viewing details of employee #" + id);
-}
 
-// Function to handle Edit
-function editEmployee(id) {
-    alert("Editing employee #" + id);
-}
-
-// Function to handle Delete
-//function deleteEmployee(id) {
- //   let confirmDelete = confirm("Are you sure you want to delete employee #" + id + "?");
-    //if (confirmDelete) {
-       // alert("Employee #" + id + " deleted successfully.");
-   // }
-//}
+function showForm() {
+    document.getElementById("detailsForm").style.display = "block";
     
+}
+
+function hideForm() {
+    document.getElementById("detailsForm").style.display = "none";
+   
+}
+
+
+
+
+// employee edit details------------------------editdetails----------
+
+
+function editEmployee() {
+    document.getElementById("editOverlay").style.display = "block";
+    document.getElementById("editForm").style.display = "block";
+    
+}
+
+function editedForm() {
+    document.getElementById("editOverlay").style.display = "none";
+    document.getElementById("editForm").style.display = "none";
+}
+//delete employeee------
+function deleteEmployee() {
+    document.getElementById("deleteOverlay").style.display ="block";
+
+    document.getElementById("deleteForm").style.display = "block";
+   
+}
+
+function closeDeleteForm() {
+    document.getElementById("deleteOverlay").style.display ="none";
+    document.getElementById("deleteForm").style.display = "none";
+ 
+
+}
 
 
 
@@ -66,44 +90,3 @@ closeFormBtn2.addEventListener("click", function () {
 });
 
 
-// employee view details-------------------------viewdetails----------
-
-
-function showForm() {
-    document.getElementById("detailsForm").style.display = "block";
-    
-}
-
-function hideForm() {
-    document.getElementById("detailsForm").style.display = "none";
-   
-}
-
-
-
-
-// employee edit details------------------------editdetails----------
-
-
-function editEmployee() {
-    document.getElementById("editForm").style.display = "block";
-    document.getElementById("editOverlay").style.display = "block";
-}
-
-function editedForm() {
-    document.getElementById("editForm").style.display = "none";
-    document.getElementById("editOverlay").style.display = "none";
-}
-
-//delete employeee------
-function deleteEmployee() {
-    document.getElementById("deleteFrom").style.display = "block";
-    document.getElementById("deleteOverlay").style.display ="block";
-
-}
-
-function deleteFrom() {
-    document.getElementById("deleteFrom").style.display = "none";
-    document.getElementById("deleteOverlay").style.display ="none";
-
-}
