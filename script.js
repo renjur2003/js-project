@@ -115,15 +115,12 @@ document.addEventListener("DOMContentLoaded", () => {
                               <button 
                                   class="btn btn-sm btn-outline-secondary dropdown-toggle"
                                   type="button"
-                                  data-bs-toggle="dropdown"
-                              >
+                                  data-bs-toggle="dropdown">
                                   ...
                               </button>
                               <ul class="dropdown-menu">
                                   <li>
-                                      <a class="dropdown-item" href="employee.html?id=${
-                                        employee.id
-                                      }">
+                                      <a class="dropdown-item" href="employee.html?id=${employee.id}">
                                           <i class="bi bi-eye"></i> View
                                       </a>
                                   </li>
@@ -145,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
           )
           .join("");
       } catch (error) {
-        console.error("Error fetching employee data:", error);
+        console.log("Error fetching employee data:", error);
         employeesContainer.innerHTML = `
                   <p class="text-danger text-center">
                       <i class="bi bi-exclamation-triangle"></i> Failed to load employee data. Please try again later.
