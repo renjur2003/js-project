@@ -249,38 +249,161 @@
             `;
         }
 
-        // Show delete confirmation modal
-        function showDeleteModal() {
-            deleteModal.show();
-        }
+        // // Show delete confirmation modal
+        // function showDeleteModal() {
+        //     deleteModal.show();
+        // }
 
-        // Delete employee function
-        async function deleteEmployee() {
-            try {
-                const response = await fetch(`http://localhost:3000/employees/${employeeId}`, {
-                    method: 'DELETE'
-                });
+        // // Delete employee function
+        // async function deleteEmployee() {
+        //     try {
+        //         const response = await fetch(`http://localhost:3000/employees/${employeeId}`, {
+        //             method: 'DELETE'
+        //         });
                 
-                if (!response.ok) {
-                    throw new Error('Failed to delete employee');
-                }
+        //         if (!response.ok) {
+        //             throw new Error('Failed to delete employee');
+        //         }
                 
-                // Redirect to employee list after successful deletion
-                window.location.href = 'index.html?deleted=true';
-            } catch (error) {
-                console.error('Error deleting employee:', error);
-                alert('Failed to delete employee: ' + error.message);
-            }
-        }
+        //         // Redirect to employee list after successful deletion
+        //         window.location.href = 'index.html?deleted=true';
+        //     } catch (error) {
+        //         console.error('Error deleting employee:', error);
+        //         alert('Failed to delete employee: ' + error.message);
+        //     }
+        // }
 
-        // Edit employee - redirect to edit page or show edit modal
-        function editEmployee() {
-            window.location.href = `edit-employee.html?id=${employeeId}`;
-        }
+        // // Edit employee - redirect to edit page or show edit modal
+        // function editEmployee() {
+        //     window.location.href = `edit-employee.html?id=${employeeId}`;
+        // }
 
-        // Set up event listeners
-        document.addEventListener('DOMContentLoaded', fetchEmployeeDetails);
-        document.getElementById('confirmDeleteBtn').addEventListener('click', deleteEmployee);
-    </script>
+        // // Set up event listeners
+        // document.addEventListener('DOMContentLoaded', fetchEmployeeDetails);
+        // document.getElementById('confirmDeleteBtn').addEventListener('click', deleteEmployee);
+   
+        async function showForm(id) {
+  try {
+    const response = await fetch(`http://localhost:3000/employees/${id}`);
+    if (!response.ok) throw new Error("Failed to fetch employee");
+
+    const employee = await response.json();
+
+    const viewContainer = document.getElementById("detailsForm");
+    viewContainer.innerHTML = `
+      <h4>${employee.salutation} ${employee.firstName} ${employee.lastName}</h4>
+      <p><strong>Email:</strong> ${employee.email}</p>
+      <p><strong>Phone:</strong> ${employee.phone}</p>
+       <p><strong>DOB:</strong> ${employee.dob}</p>
+      <p><strong>Gender:</strong> ${employee.gender}</p>
+       <p><strong>Qualification:</strong> ${employee.qualifications}</p>
+      <p><strong>Address:</strong> ${employee.address}</p>
+       <p><strong>DOB:</strong> ${employee.country}</p>
+         <p><strong>DOB:</strong> ${employee.state}</p>
+       <p><strong>DOB:</strong> ${employee.city}</p>
+    `;
+    viewContainer.style.display = "block";
+  } catch (error) {
+    console.error("View Error:", error);
+    alert("Error fetching employee details.");
+  }
+}
+
+//edit employee details------------------------------
+let selectedEmployeeId = null;
+
+async function editEmployee(id) {
+  selectedEmployeeId = id;
+
+  try {
+    const response = await fetch(`http://localhost:3000/employees/${id}`);
+    if (!response.ok) throw new Error("Failed to fetch employee");
+
+    const employee = await response.json();
+
+    document.getElementById("editFirstName").value = employee.firstName;
+    document.getElementById("editLastName").value = employee.lastName;
+    document.getElementById("editEmail").value = employee.email;
+    document.getElementById("editPhone").value = employee.phone;
+    document.getElementById("editDob").value = employee.dob;
+    document.getElementById("editQualification").value = employee.qualifications;
+    document.getElementById("editAddress").value = employee.address;
+    document.getElementById("editCity").value = employee.city;
+    document.getElementById("editCountry").value = employee.country;
+    document.getElementById("editState").value = employee.state;
+    document.querySelector(`input[name="editGender"][value="${employee.gender}"]`).checked = true;
+
+    document.getElementById("editOverlay").style.display = "block";
+    document.getElementById("editForm").style.display = "block";
+  } catch (error) {
+    console.error("Edit Error:", error);
+    alert("Error fetching employee data.");
+  }
+}
+
+
+//edit submit handler-------------------------------
+document.getElementById("editEmployeeForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const updatedEmployee = {
+    firstName: document.getElementById("editFirstName").value,
+    lastName: document.getElementById("editLastName").value,
+    email: document.getElementById("editEmail").value,
+    phone: document.getElementById("editPhone").value,
+    dob: document.getElementById("editDob").value,
+    gender: document.querySelector('input[name="editGender"]:checked')?.value,
+    qualifications: document.getElementById("editQualification").value,
+    address: document.getElementById("editAddress").value,
+    city: document.getElementById("editCity").value,
+    state: document.getElementById("editState").value,
+    country: document.getElementById("editCountry").value,
+  };
+
+  try {
+    const response = await fetch(`http://localhost:3000/employees/${selectedEmployeeId}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedEmployee),
+    });
+
+    if (response.ok) {
+      alert("Employee updated successfully.");
+      document.getElementById("editOverlay").style.display = "none";
+      fetchEmployees(); // refresh list
+    } else {
+      alert("Update failed.");
+    }
+  } catch (error) {
+    console.error("Update error:", error);
+  }
+});
+
+//delete employee-----------------------------------
+function deleteEmployee(id) {
+  selectedEmployeeId = id;
+  document.getElementById("deleteOverlay").style.display = "block";
+}
+
+document.getElementById("confirmDeleteBtn").addEventListener("click", async function () {
+  try {
+    const response = await fetch(`http://localhost:3000/employees/${selectedEmployeeId}`, {
+      method: "DELETE"
+    });
+
+    if (response.ok) {
+      alert("Employee deleted.");
+      document.getElementById("deleteOverlay").style.display = "none";
+      fetchEmployees(); // refresh list
+    } else {
+      alert("Delete failed.");
+    }
+  } catch (error) {
+    console.error("Delete error:", error);
+  }
+});
+
+
+   </script>
 </body>
 </html>

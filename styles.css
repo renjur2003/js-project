@@ -284,6 +284,7 @@ white-space: nowrap;
       }
       .edit--profile {
         border-radius: 10px;
+        max-width: 100%;
       }
         
       /*---deleted form--------*/

@@ -111,33 +111,21 @@ document.addEventListener("DOMContentLoaded", () => {
                       <div class="col-1">${employee.dob}</div>
                       <div class="col-2">${employee.country}</div>
                       <div class="col">
-                          <div class="dropdown">
-                              <button 
-                                  class="btn btn-sm btn-outline-secondary dropdown-toggle"
-                                  type="button"
-                                  data-bs-toggle="dropdown">
-                                  ...
-                              </button>
-                              <ul class="dropdown-menu">
-                                  <li>
-                                      <a class="dropdown-item" href="employee.html?id=${employee.id}">
-                                          <i class="bi bi-eye"></i> View
-                                      </a>
-                                  </li>
-                                  <li>
-                                      <a class="dropdown-item" href="#">
-                                          <i class="bi bi-pencil"></i> Edit
-                                      </a>
-                                  </li>
-                                  <li>
-                                      <a class="dropdown-item text-danger" href="#">
-                                          <i class="bi bi-trash"></i> Delete
-                                      </a>
-                                  </li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
+
+                      <div class="dropdown">
+                        <button class="three-dot-btn" type="button" onclick="toggleDropdown(this)">
+                            <strong>...</strong>
+                        </button>
+                       <ul class="dropdown-menu">
+ <li onclick="window.location.href='employeee.html?id=${employee.id}'"><i class="bi bi-eye"></i> View Details</li>
+  <li onclick="editEmployee(${employee.id})"><i class="bi bi-pencil"></i> Edit</li>
+  <li onclick="deleteEmployee(${employee.id})" class="text-danger"><i class="bi bi-trash"></i> Delete</li>
+</ul>
+
+                    </div>
+                    </div>
+                    </div>
+                    
               `
           )
           .join("");
@@ -214,7 +202,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
   
       // Add employee data as a JSON string
-      formData.append("employeeData", JSON.stringify(employeeData));
+      for (const key in employeeData) {
+        formData.append(key, employeeData[key]);
+      }
+      // formData.append("employeeData", JSON.stringify(employeeData));
+
   
       try {
         const response = await fetch("http://localhost:3000/employees", {

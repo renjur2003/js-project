@@ -126,7 +126,7 @@ app.get("/employees/:id", (req, res) => {
   }
 });
 
-// Create an employee
+//Create an employee
 app.post("/employees", (req, res) => {
   const employees = readEmployeeData();
   const newEmployee = req.body;
