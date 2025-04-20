@@ -98,12 +98,12 @@ function validateEmployeeData(employee) {
   if (!employee.country) {
     errors.push("Country is required");
   }
-  if (!employee.username) {
-    errors.push("Username is required");
-  }
-  if (!employee.password) {
-    errors.push("Password is required");
-  }
+  // if (!employee.username) {
+  //   errors.push("Username is required");
+  // }
+  // if (!employee.password) {
+  //   errors.push("Password is required");
+  // }
 
   return errors;
 }

@@ -160,7 +160,16 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Please upload an avatar image.");
       submitButton.disabled = false;
       return;
-    }
+    };
+
+    const formatDate = (dateStr) => {
+      const date = new Date(dateStr);
+      const day = String(date.getDate()).padStart(2, '0');
+      const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
+      const year = date.getFullYear();
+      return `${day}-${month}-${year}`;
+    };
+
 
     // Capture employee data
     const employeeData = {
@@ -169,9 +178,9 @@ document.addEventListener("DOMContentLoaded", () => {
       lastName: document.getElementById("lastName").value.trim(),
       email: document.getElementById("email").value.trim(),
       phone: document.getElementById("phone").value.trim(),
-      dob: document.getElementById("dob").value,
+      dob: formatDate(document.getElementById("dob").value),
       gender: document.querySelector('input[name="gender"]:checked')?.value,
-      qualification: document.getElementById("qualification").value.trim(),
+      qualifications: document.getElementById("qualification").value.trim(),
       address: document.getElementById("address").value.trim(),
       country: document.getElementById("country").value,
       state: document.getElementById("state").value,
@@ -194,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Append fields to FormData
     for (const key in employeeData) {
       formData.append(key, employeeData[key]);
-    }
+    } 
 
     try {
       const response = await fetch("http://localhost:3000/employees", {
@@ -226,7 +235,7 @@ document
   .getElementById("imageUpload")
   .addEventListener("change", function (event) {
     const file = event.target.files[0];
-    const previewContainer = document. getElementById("imagePreview");
+    const previewContainer = document.getElementById("imagePreview");
 
     if (file) {
       const validTypes = ["image/png", "image/jpeg", "image/jpg"];
